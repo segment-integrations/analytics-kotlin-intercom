@@ -5,9 +5,10 @@ on:
     tags:
       - '*.*.*'
 
+permissions: write-all
+
 jobs:
   release:
-    permissions: write-all
     runs-on: ubuntu-latest
     environment: deployment
     steps:
