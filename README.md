@@ -1,23 +1,51 @@
-// add badges and stuff here
+# Analytics-Kotlin Intercom
 
-# Destination
+Add Intercom device mode support to your applications via this plugin for [Analytics-Kotlin](https://github.com/segmentio/analytics-kotlin)
 
-## Getting Started
+## Adding the dependency
 
-1. Create repo from this template. The name of the repo should follow this pattern `project-language-destination`. For example `analytics-kotlin-firebase`
-2. In `settings.gralde.kts`, change `rootProject.name` to match your repo name.
-3. In `gradle.properties`, update the fields with `<>` brackets
-4. Delete `com.segment.analytics.kotlin.destinations.Destination.kt`
-5. Create a directory with the destination name under `com.segment.analytics.kotlin.destinations`. For example Firebase, `com.segment.analytics.kotlin.destinations.firebase`
-6. Create your destination class under the directory created in step 5. For example Firebase, `com.segment.analytics.kotlin.destinations.firebase.Firebase.kt`
-7. update Android manifest with your package name. For example Firebase
-   ```xml
-    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.segment.analytics.kotlin.destinations.firebase">
-   ```
-8. Implement destination
-9. Add tests
+To install the Segment-Intercom integration, simply add this line to your gradle file:
 
+```
+implementation 'com.segment.analytics.kotlin.destinations:intercom:<latest_version>'
+```
+
+Or the following for Kotlin DSL
+
+```
+implementation("com.segment.analytics.kotlin.destinations:intercom:<latest_version>")
+```
+
+
+
+## Using the Plugin in your App
+
+Open the file where you setup and configure the Analytics-Kotlin library.  Add this plugin to the list of imports.
+
+```
+import com.segment.analytics.kotlin.destinations.intercom.IntercomDestination
+```
+
+Just under your Analytics-Kotlin library setup, call `analytics.add(plugin = ...)` to add an instance of the plugin to the Analytics timeline.
+
+```
+    analytics = Analytics("<YOUR WRITE KEY>", applicationContext) {
+        this.flushAt = 3
+        this.trackApplicationLifecycleEvents = true
+    }
+    analytics.add(plugin = IntercomDestination(applicationContext))
+```
+
+Your events will now begin to flow to Intercom in device mode.
+
+
+## Support
+
+Please use Github issues, Pull Requests, or feel free to reach out to our [support team](https://segment.com/help/).
+
+## Integrating with Segment
+
+Interested in integrating your service with us? Check out our [Partners page](https://segment.com/partners/) for more details.
 
 ## License
 ```
@@ -43,3 +71,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
