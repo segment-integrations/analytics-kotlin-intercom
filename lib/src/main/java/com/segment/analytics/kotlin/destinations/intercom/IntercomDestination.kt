@@ -104,7 +104,7 @@ class IntercomDestination(
                     put(PRICE, price)
                 }
 
-                properties.forEach { (key, value) ->
+                for ((key, value) in properties) {
                     // here we are only interested in primitive values and not maps or collections
                     if (key !in setOf("products", REVENUE, TOTAL, CURRENCY)
                         && value is JsonPrimitive) {
@@ -195,7 +195,7 @@ class IntercomDestination(
             builder.withCompany(company)
         }
 
-        traits.forEach { (key, value) ->
+        for ((key, value) in traits) {
             // here we are only interested in primitive values and not maps or collections
             if (value is JsonPrimitive &&
                 key !in setOf(NAME, EMAIL, PHONE, "userId", "anonymousId")) {
@@ -223,7 +223,7 @@ class IntercomDestination(
         company.getInt(MONTHLY_SPEND)?.let { builder.withMonthlySpend(it) }
         company.getString(PLAN)?.let { builder.withPlan(it) }
 
-        company.forEach { (key, value) ->
+        for((key, value) in company) {
             // here we are only interested in primitive values and not maps or collections
             if (value is JsonPrimitive &&
                 key !in setOf("id", NAME, CREATED_AT, MONTHLY_SPEND, PLAN)
