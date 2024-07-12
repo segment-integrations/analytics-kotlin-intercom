@@ -30,7 +30,6 @@ android {
         }
     }
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -40,11 +39,10 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
-    api("com.segment.analytics.kotlin:android:1.6.2")
+    api("com.segment.analytics.kotlin:android:1.16.3")
     implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.core:core-ktx:1.13.1")
 
     implementation("androidx.lifecycle:lifecycle-process:2.4.1")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.4.1")
